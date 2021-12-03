@@ -1,0 +1,10 @@
+mail.td
+tempmail.cn
+moakt.com
+rootsh.com
+zlc@tempmail.cn  
+微软开发者：ZHANGlc201033!
+ps：1234562010OKok!!
+github：zlc123456!!
+python mail_bomb.py -faddr admin@github.com -taddr a7hh45joo@disbox.net -v1 -tnum 2 -c -s "hello" -b "886"
+python mail_bomb.py -faddr admin@github.com -taddr 29242168@qq.com -s "Github: Your PIN is here" -b "hello!我是zlc."

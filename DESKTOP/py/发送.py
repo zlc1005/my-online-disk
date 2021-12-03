@@ -1,0 +1,10 @@
+import requests,json
+header = {'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36 Edg/93.0.961.38'}
+a = {'checksum': '524542e9798f019004bed7c3d843b1ad',
+'client': '1ecbdca138dc545d0042617f31fc1556',
+'e': '%5B%7B%22device_id%22%3A%22a6a4c3c9-d115-446f-b544-5b5ed5344f9cR%22%2C%22user_id%22%3Anull%2C%22timestamp%22%3A1632329159689%2C%22event_id%22%3A15%2C%22session_id%22%3A1632329003071%2C%22event_type%22%3A%22Join%20Kahoot%22%2C%22version_name%22%3Anull%2C%22platform%22%3A%22Web%22%2C%22os_name%22%3A%22Chrome%22%2C%22os_version%22%3A%2293%22%2C%22device_model%22%3A%22Windows%22%2C%22language%22%3A%22zh-CN%22%2C%22api_properties%22%3A%7B%7D%2C%22event_properties%22%3A%7B%22component%22%3A%22controller%22%2C%22list_id%22%3A%22controller%22%2C%22url%22%3A%22https%3A%2F%2Fkahoot.it%2Fv2%2Fjoin%22%2C%22page_path%22%3A%22%2Fv2%2Fjoin%22%2C%22kahoot_version%22%3A%22v1.1915.0%22%2C%22is_test%22%3Afalse%2C%22nickname%22%3A%22sb%22%2C%22game_pin%22%3A%225197602%22%2C%22quiz_type%22%3A%22quiz%22%2C%22is_team_mode%22%3Afalse%2C%22is_namerator_enabled%22%3Afalse%2C%22is_player_id_enabled%22%3Afalse%2C%22is_personalised_learning_enabled%22%3Afalse%2C%22host_primary_usage%22%3A%22teacher%22%2C%22is_magic_link%22%3Afalse%2C%22is_org_invite%22%3Afalse%7D%2C%22user_properties%22%3A%7B%7D%2C%22uuid%22%3A%22965a81e7-5869-4d5d-a742-1092dd325154%22%2C%22library%22%3A%7B%22name%22%3A%22amplitude-js%22%2C%22version%22%3A%225.3.0%22%7D%2C%22sequence_number%22%3A50%2C%22groups%22%3A%7B%7D%2C%22group_properties%22%3A%7B%7D%2C%22user_agent%22%3A%22Mozilla%2F5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F93.0.4577.82%20Safari%2F537.36%22%7D%5D',
+'upload_time': '1632329159715',
+'v': '2'}
+info2 = requests.post(url='https://api2.amplitude.com/',data=json.dumps(a),headers=header)
+
+print(info2.text)
