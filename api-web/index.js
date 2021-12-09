@@ -3,12 +3,12 @@ const express = require("express")
 const querystring = require('querystring');
 var url = require('url');
 const fs = require("fs")
-const app=express() //makes computer a local server
-
+const app=express() //makes computer a local serverapp.set(\'port\', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3000);
 app.listen(process.env.PORT || 3000, function(){
-  console.log("Server is running on port 3000")
+  console.log("Server is running on port 3000");
 });
-
+app.set('port', process.env.PORT || 3000);
 app.get("/xxx", function(req, res){ //first parameter is the path, / which means the current folder
   var url_parts = url.parse(req.url, true);
   query = url_parts.query;
@@ -33,7 +33,6 @@ app.get("/xxx", function(req, res){ //first parameter is the path, / which means
         })
     }
   });
-
 });
 app.get('/check', function(req,res){
   datagui=''
@@ -107,3 +106,90 @@ app.get("/toleo", function(req, res){ //first parameter is the path, / which mea
             console.log("successed");
           }})
 })
+
+app.get('/get_s', function(req,res){
+  fs.readFile('./ss.json','utf-8',function(err, jsonString){
+    if (err){
+      console.log(err);
+    }else{
+        var data = JSON.parse(jsonString)
+        res.send(data)
+        //console.log(data)
+    }
+  });
+})
+
+app.get("/set_s", function(req, res){ //first parameter is the path, / which means the current folder
+  var url_parts = url.parse(req.url, true);
+  query = url_parts.query;
+  res.send("hello")  //__dirname is current directory (two _)
+  var dataString=''
+  console.log(query);
+  const newPerson = query
+  jsonString='[]'
+        var data = JSON.parse(jsonString);
+        data.push(newPerson);
+        dataString=JSON.stringify(data);
+        //console.log(data)
+        fs.writeFileSync("./ss.json",dataString, function(err){
+          if (err){
+            console.log(err);
+          }else{
+            console.log("successed");
+          }})
+})
+
+app.get('/surl', function(req,res){
+  datagui=''
+  fs.readFile('./surl.json','utf-8',function(err, jsonString){
+    if (err){
+      console.log(err);
+    }else{
+        var data = JSON.parse(jsonString);
+        for (var i = 0; i < data.length; i++) {
+          datagui+=('surl:'+data[i]['surl']+"\n")
+          datagui+=('oldurl:'+data[i]['old']+"\n")
+          datagui+='<br>'
+        }
+        res.send(datagui)
+        //console.log(data)
+    }
+  });
+})
+
+app.get("/surlset", function(req, res){ //first parameter is the path, / which means the current folder
+  var url_parts = url.parse(req.url, true);
+  query = url_parts.query;
+  res.send("hello")  //__dirname is current directory (two _)
+  var dataString=''
+  console.log(query);
+  const newPerson = query
+  fs.readFile('./surl.json','utf-8',function(err, jsonString){
+    if (err){
+      console.log(err);
+    }else{
+        var data = JSON.parse(jsonString);
+        data.push(newPerson);
+        dataString=JSON.stringify(data);
+        //console.log(data)
+        fs.writeFileSync("./surl.json",dataString, function(err){
+          if (err){
+            console.log(err);
+          }else{
+            console.log("successed");
+          }
+        })
+    }
+  });
+});
+
+app.get('/delallsurl', function(req,res){
+  fs.writeFileSync("./surl.json","[]", function(err){
+    if (err){
+      console.log(err);
+    }else{
+      console.log("successed");
+      // res.send("successed")
+    }
+});
+});
