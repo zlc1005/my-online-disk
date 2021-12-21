@@ -1,0 +1,93 @@
+{
+  "version": "4.2.0.1",
+  "configs": [
+    {
+      "server": "67.218.136.104",
+      "server_port": 820,
+      "password": "ODI2MzQxMj",
+      "method": "rc4-md5",
+      "remarks": "hx",
+      "timeout": 5
+    },
+    {
+      "server": "us.a.cloudss.win",
+      "server_port": 16507,
+      "password": "a179860056",
+      "method": "rc4-md5",
+      "remarks": "usa",
+      "timeout": 5
+    },
+    {
+      "server": "us.b.cloudss.win",
+      "server_port": 16507,
+      "password": "a179860056",
+      "method": "rc4-md5",
+      "remarks": "usb",
+      "timeout": 5
+    },
+    {
+      "server": "hk.a.cloudss.win",
+      "server_port": 16507,
+      "password": "a179860056",
+      "method": "rc4-md5",
+      "remarks": "hka",
+      "timeout": 5
+    },
+    {
+      "server": "sg.a.cloudss.win",
+      "server_port": 16507,
+      "password": "a179860056",
+      "method": "rc4-md5",
+      "remarks": "sga",
+      "timeout": 5
+    }
+  ],
+  "strategy": null,
+  "index": 2,
+  "global": true,
+  "enabled": true,
+  "shareOverLan": true,
+  "isDefault": false,
+  "localPort": 1080,
+  "portableMode": true,
+  "showPluginOutput": false,
+  "pacUrl": null,
+  "useOnlinePac": false,
+  "secureLocalPac": true,
+  "availabilityStatistics": false,
+  "autoCheckUpdate": true,
+  "checkPreRelease": false,
+  "isVerboseLogging": false,
+  "isIPv6Enabled": false,
+  "generateLegacyUrl": false,
+  "geositeUrl": null,
+  "geositeGroup": "geolocation-!cn",
+  "geositeBlacklistMode": true,
+  "logViewer": {
+    "topMost": false,
+    "wrapText": false,
+    "toolbarShown": false,
+    "Font": "Consolas, 8pt",
+    "BackgroundColor": "Black",
+    "TextColor": "White"
+  },
+  "proxy": {
+    "useProxy": false,
+    "proxyType": 0,
+    "proxyServer": "",
+    "proxyPort": 0,
+    "proxyTimeout": 3,
+    "useAuth": false,
+    "authUser": "",
+    "authPwd": ""
+  },
+  "hotkey": {
+    "SwitchSystemProxy": "",
+    "SwitchSystemProxyMode": "",
+    "SwitchAllowLan": "",
+    "ShowLogs": "",
+    "ServerMoveUp": "",
+    "ServerMoveDown": "",
+    "RegHotkeysAtStartup": false
+  }
+}
