@@ -1,0 +1,1 @@
+in1,in2=int(input()),int(input());print(in2+(in2-in1))

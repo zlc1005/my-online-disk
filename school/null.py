@@ -1,12 +1,16 @@
+from typing import List
+
+
 class _main():
     def __init__(self):
         import random
         self.random=random
-        self.jjcc = {'+':['add {a} and {b}','{a} increased by {b}','the sum of {a} and {b}','add {a} to {b}','{a} plus {b}'],'-':['subtract {b} from {a}','{b} less than {a}','{a} decreased by {b}','{a} minus {b}','the difference of {a} and {b}'],'*':['{a} times {b}','multiply {a} by {b}','the product of {a} and {b}'],'/':['divide {a} by {b}','the quotient of {a} and {b}']}
+        self.jc=['+','-','*','/']
+        self.jjcc = {'+':['add {a} and {b}','{a} increased by {b}','the sum of {a} and {b}','add {a} to {b}','{a} plus {b}'],'-':['subtract {b} from {a}','{b} less than {a}','{a} decreased by {b}','{a} minus {b}','the difference of {a} and {b}','{a} minus {b}'],'*':['{a} times {b}','multiply {a} by {b}','the product of {a} and {b}'],'/':['divide {a} by {b}','the quotient of {a} and {b}']}
     def get_quiz(self,list_):
         a=int(list_[0])
-        b=int(list_[1])
-        jjjcc=list_[2]
+        b=int(list_[2])
+        jjjcc=list_[1]
         tf=False
         if jjjcc == '+':
             thesum=a+b
@@ -28,27 +32,77 @@ class _main():
         return [self.random.choice(self.jjcc[jjjcc]).format(a=a,b=b),thesum,f'{a}{jjjcc}{b}']
     def ai_get(self,ss):
         aiout=[]
-        jjcc=''
         if '+' in ss:
-            jjcc='+'
             aiout.append(ss.split('+')[0])
+            aiout.append('+')
             aiout.append(ss.split('+')[1])
         if '-' in ss:
-            jjcc='-'
             aiout.append(ss.split('-')[0])
+            aiout.append('-')
             aiout.append(ss.split('-')[1])
         if '*' in ss:
-            jjcc='*'
             aiout.append(ss.split('*')[0])
+            aiout.append('*')
             aiout.append(ss.split('*')[1])
         if '/' in ss:
-            jjcc='/'
             aiout.append(ss.split('/')[0])
+            aiout.append('/')
             aiout.append(ss.split('/')[1])
-        aiout.append(jjcc)
         return aiout
     def ai_ex_to_qu(self,ex):
         return self.get_quiz(list_=self.ai_get(ex))
+    def jjcc_in(self,jjcc:list):
+        for i in jjcc:
+            if i in self.jjcc:
+                return True
+        return False
+
+class New_Get_Quiz(object):
+    def __init__(self,num,is_s__=False):
+        self.num=num
+        self.is_=is_s__
+        self.jjcc=None
+    def __add__(self,other):
+        self.num2=other
+        self.jjcc='+'
+        return New_Get_Quiz([self.num,self.jjcc,self.num2])
+    def __sub__(self,other):
+        self.num2=other
+        self.jjcc='-'
+        return New_Get_Quiz([self.num,self.jjcc,self.num2])
+    def __mul__(self,other):
+        self.num2=other
+        self.jjcc='*'
+        return New_Get_Quiz([self.num,self.jjcc,self.num2])
+    def __truediv__(self,other):
+        self.num2=other
+        self.jjcc='/'
+        return New_Get_Quiz([self.num,self.jjcc,self.num2])
+    def __call__(self):
+        return self.get_quiz(list_=[self.num,self.jjcc,self.num2])
+    def get_quiz(self,list_):
+        a=int(list_[0])
+        b=int(list_[2])
+        jjjcc=list_[1]
+        tf=False
+        if jjjcc == '+':
+            thesum=a+b
+        elif jjjcc == '-':
+            if tf:
+                while a<b or a==b:
+                    a=self.random.randint(1,30)
+                    b=self.random.randint(1,30)
+                    # self.log(f'{r1}+{r2}')
+            thesum=a-b
+        elif jjjcc == '*':
+            thesum=a*b
+        elif jjjcc == '/':
+            if tf:
+                while a%b!=0:
+                    a=self.random.randint(1,30)
+                    b=self.random.randint(1,30)
+            thesum=a/b
+        return [self.random.choice(self.jjcc[jjjcc]).format(a=a,b=b),thesum,f'{a}{jjjcc}{b}']
 if __name__ == '__main__':
     main=_main()
-    print(main.get_quiz(['2','3','+']))
+    print(main.get_quiz(['2','+','2']))
